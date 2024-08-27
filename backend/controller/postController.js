@@ -9,7 +9,9 @@ export const getallposts = async(req,res)=>{
             title: post.title,
             author: post.author,
             image: post.image,
-            description: post.description.length > 40 ? post.description.substring(0, 40) + '...' : post.description
+            category: post.category,
+            description: post.description.length > 40 ? post.description.substring(0, 40) + '...' : post.description,
+            createdAt: post.createdAt 
         }));
         res.json(postSummary);
     } catch (error) {
