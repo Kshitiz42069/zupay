@@ -39,8 +39,8 @@ export const signin = async(req,res)=>{
             res.status(400).json({error:'Invalid User Data'});  
         }
     } catch (error) {
-        res.status(500).json({error:'Internal Server Error'});
         console.log('error in the signup function',error);
+        res.status(500).json({error:'Internal Server Error'});
     }
 }
 
