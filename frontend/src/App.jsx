@@ -50,7 +50,7 @@ function App() {
             <Footer/>
           </div>
         }/>
-        <Route path="/blogs/:id" element={
+        <Route path="/blog/:postId" element={
           <div>
             <Navbar/>
             <BlogDetails/>
@@ -58,11 +58,13 @@ function App() {
           </div>
         }/>
         <Route path="/accountdetails/:id" element={
+          authUser ? 
           <div>
             <Navbar/>
             <AccountDetails/>
             <Footer/>
-          </div>
+          </div> :
+          <Navigate to={'/'}/>
         }/>
       </Routes>
       <Toaster/>

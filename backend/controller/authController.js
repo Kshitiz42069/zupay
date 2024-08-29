@@ -57,8 +57,9 @@ export const login = async(req,res)=>{
         generateToken(user._id,res);
 
         res.status(200).json({
+            _id:user._id,
             username:user.username,
-            fullname:user.fullname
+            fullname:user.fullname,
         });
     } catch (error) {
         res.status(500).json({error:"Internal Server Error"});

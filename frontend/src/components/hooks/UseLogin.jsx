@@ -25,7 +25,7 @@ function UseLogin(){
                 throw new Error(data.error);
             }
 
-            localStorage.setItem("blogs", JSON.stringify(data));
+            localStorage.setItem("user", JSON.stringify(data));
             setAuthUser(data);
         } catch (error) {
             toast.error(error.message);

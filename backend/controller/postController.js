@@ -25,7 +25,7 @@ export const getpostdetails = async(req,res)=>{
         const post = await Post.findById(req.params.id).populate('author','fullname');
 
         if(!post){
-            return res.status(400).json({message:'post does not exists'});
+            return res.status(404).json({message:'post does not exists'});
         }
         res.json(post);
     } catch (error) {
@@ -98,5 +98,25 @@ export const deletepost = async(req,res)=>{
     } catch (error) {
         console.log('error in the deleting post function',error);
         res.status(500).json({error:'internal server error'});
+    }
+}
+
+export const userPosts = async(req,res)=>{
+    const {id: userId} = req.params;
+    try {
+        const userPosts = await Post.find({author: userId}).populate('author','fullname');
+        const postSummary = userPosts.map(post =>({
+            _id:post._id,
+            title: post.title,
+            author: post.author,
+            image: post.image,
+            category: post.category,
+            description: post.description.length > 40 ? post.description.substring(0, 40) + '...' : post.description,
+            createdAt: post.createdAt 
+        }));
+        res.json(postSummary);
+    } catch (error) {
+        console.log("error fetching user posts",error);
+        res.status(500).json({error:"internal server error"});
     }
 }

@@ -2,8 +2,8 @@ import { useState } from "react"
 import UseLogin from "../../hooks/UseLogin";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("dai@gmail.com");
+  const [password, setPassword] = useState("1234567");
   const {loading,login} = UseLogin();
 
   const handleSubmit = async(e) =>{

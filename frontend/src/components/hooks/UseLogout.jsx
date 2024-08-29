@@ -16,15 +16,15 @@ const UseLogout = () => {
             if(data.error){
                 throw new Error(data.error);
             }
-            localStorage.removeItem("blog");
             setAuthUser(null);
+            localStorage.removeItem("user");
         } catch (error) {
             toast.error(error.message);
         }finally{
             setLoading(false);
         }
     }
-  return (loading,logout);
+  return {loading,logout};
 }
 
 export default UseLogout

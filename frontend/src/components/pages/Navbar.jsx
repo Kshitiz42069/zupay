@@ -6,6 +6,7 @@ import LoginIcon from '@mui/icons-material/Login';
 
 const Navbar = () => {
   const {authUser} = useAuthContext();
+  console.log(authUser);
   const {loading,logout} = UseLogout();
   return (
     <div>
@@ -42,7 +43,7 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
               <li>
-                <a href="/accountdetails/1" className="justify-between">
+                <a href={`/accountdetails/${authUser._id}`} className="justify-between">
                   Profile
                   <span className="badge">New</span>
                 </a>
